@@ -20,7 +20,7 @@ document.addEventListener('paste', function(event) {
     }
 });
 
-// Handle drag and drop
+// drag and drop
 const dropArea = document.getElementById('drop-area');
 dropArea.addEventListener('dragover', function(e) {
     e.preventDefault();
