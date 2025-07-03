@@ -56,7 +56,7 @@ function processImage(img) {
 
     Tesseract.recognize(
         img.src,  // Gambar yang akan diproses
-        'eng',     // Bahasa OCR (misalnya 'eng' untuk bahasa Inggris)
+        'eng+ind',     // Bahasa OCR (misalnya 'eng' untuk bahasa Inggris)
         {
             logger: (m) => console.log(m) // Logging progress (opsional)
         }
