@@ -58,10 +58,24 @@ function processImage(img) {
         img.src,  // Gambar yang akan diproses
         'eng+ind',     // Bahasa OCR (misalnya 'eng' untuk bahasa Inggris)
         {
-            logger: (m) => console.log(m) // Logging progress (opsional)
+            logger: (m) => {
+                console.log(m);
+                if (m.status === "recognizing text") {
+                     const progress = Math.round(m.progress * 100);
+                     document.getElementById('progress-bar').style.width = progress + '%';
+                }
+            }
+ // Logging progress (opsional)
         }
     ).then(({ data: { text } }) => {
         console.log("Hasil OCR:", text);
         document.getElementById('result').innerText = text; // Menampilkan hasil OCR
     });
 }
+// Copy btn
+document.getElementById('copy-btn').addEventListener('click', () => {
+  const text = document.getElementById('result').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Text copied to clipboard!');
+  });
+});
